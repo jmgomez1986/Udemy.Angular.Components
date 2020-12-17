@@ -1,3 +1,23 @@
 <h1>
-  Hello world!
+
+  <app-progress-bar
+    [progress]="counterProgress">
+  </app-progress-bar>
+
+   <app-countdown #contdown 
+    [init]="totalCountdown"
+    (onDecrease)="updateProgress($event)"
+    (onComplete)="countdownFinished()">
+  </app-countdown>
+
+  <div class="initInput">
+    <label for="totalCountdown">Init on:</label>
+    <input id="totalCountdown" type="text" [(ngModel)]="totalCountdown">
+  </div>
+
+  <!-- Template reference variable (#contdown)
+       esta variable tiene todos los metodos y variables del componente donde se creo -->
+
+  <button (click)="contdown.startCountdown(); counterProgress = 0">RESTART</button>
+
 </h1>
